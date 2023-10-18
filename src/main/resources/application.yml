@@ -1,0 +1,54 @@
+server:
+  port: 9000
+key:
+  private: |
+      -----BEGIN PRIVATE KEY-----
+      MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCNKS/eo6wPXhOI
+      txxGMLyWmmZ76rlRCE3OVm1q02BItyRMecDSo/K9XNqMK264wZBtL2xUGbDqKT59
+      BijVmoJuUnKaV29QA7Sq3LNt+kBx0j/Ey+Bxf3jpPpnsZcQrXbJ75qsDBp1/ZSxh
+      ZQVDGl/9+crS2D7jwycEqUNUWNOClbMyfmH6fyJX6Lcr3cDOPda+C3LwwsVOgtsk
+      2uvCzmplwScYCaa8jGmeOaGTHYda6rRXdGtlD12KmM+UaxpH5QvEF/OVofGPS05j
+      vLd27tUNDErYpFAv0oS8Iu89ykOFci3pc5z/sqY5qpP2BgIHbd8Zx4JgKxfttQ7P
+      Yl+oBKlB3hzj+RCD0MAW8euSGQukOOSXUZkJAzxhAoGBAIBMOCzLIQ2VrG3gwWc1
+      kmFvi3/yRkpUH0N8d8/7nQThMoEoI8L+0OhXcQKeUJO9K5DAt3WGmjYuILl6ZK5d
+      OPUdYBFiinxRlF+I+rEac7Le34G/9zYfY+e4fvULp7yu+IAF0MA6Wu3ZH7q2ULTs
+      MUzyz2hHLNBtTL5SNFKDPJNx
+      -----END PRIVATE KEY-----
+  public: |
+    -----BEGIN PUBLIC KEY-----                                      
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjSkv3qOsD14TiLccRjC8
+    lppme+q5UQhNzlZtatNgSLckTHnA0qPyvVzajCtuuMGQbS9sVBmw6ik+fQYo1ZqC
+    blJymldvUAO0qtyzbfpAcdI/xMvgcX946T6Z7GXEK12ye+arAwadf2UsYWUFQxpf
+    /fnK0tg+48MnBKlDVFjTgpWzMn5h+n8iV+i3K93Azj3Wvgty8MLFToLbJJpNyhFr
+    CYLvHX6/Wck1T06hNiFmy0oJES2b+3XTMC5mEii2JIFjLo2NQl7AOS1zmEHMAibk
+    FwyvukMoju2TZaIzYgCXNPKhWcjrX4OaG9f8xIrR2ayyA52Y7/WLsanP+EeRc24p
+    PwIDAQAB
+    -----END PUBLIC KEY-----
+user:
+  oauth:
+    clientId: client
+    clientSecret: client
+    redirectUris: http://localhost:8081/login
+    user:
+      username: user
+      password: user
+    accessTokenValidity: 300
+    refreshTokenValidity: 240000
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:file:~/test
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+security:
+  oauth2:
+    resource:
+      filter-order: 3
